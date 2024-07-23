@@ -1,0 +1,9 @@
+.featured-data {
+  display: grid;
+  grid-template-columns: 1fr 3fr 1fr;
+}
+
+.city {
+  grid-column: 2;
+  font-size: 3em;
+}

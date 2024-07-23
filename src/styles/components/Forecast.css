@@ -1,0 +1,17 @@
+.forecast {
+  background-color: var(--primary);
+  border-radius: 20px;
+  color: var(--background);
+
+  .title {
+    text-align: center;
+  }
+
+  .forecast-list {
+    display: flex;
+    gap: 2vw;
+    overflow: hidden;
+    overflow-x: scroll;
+    padding-inline: 2vw;
+  }
+}
