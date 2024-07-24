@@ -1,10 +1,10 @@
 import "../styles/components/WeatherIcon.css";
 
-export function WeatherIcon({ code, alt = false }) {
+export function WeatherIcon() {
   return (
-    <div className={`weather-icon-container ${alt && "alt-background"}`}>
-      <img src={code.image} alt={code.description} className="weather-icon" />
-      <h3 className="weather-icon-description">{code.description}</h3>
+    <div className={`weather-icon-container`}>
+      <img src="" alt="" className="weather-icon" />
+      <h3 className="weather-icon-description"></h3>
     </div>
   );
 }
