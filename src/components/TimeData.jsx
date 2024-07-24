@@ -1,17 +1,6 @@
 import "../styles/components/TimeData.css";
 
-import { useEffect, useState } from "react";
-import { destructureDate } from "../utilities/time_data";
-
-export function TimeData() {
-  const [time, setTime] = useState(destructureDate(new Date()));
-
-  useEffect(() => {
-    let timerID = setInterval(() => setTime(destructureDate(new Date())));
-
-    return () => clearInterval(timerID);
-  }, []);
-
+export function TimeData({ time }) {
   return (
     <div className="time-data">
       <h2 className="title">Date & Time</h2>

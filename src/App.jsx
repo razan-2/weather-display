@@ -11,29 +11,32 @@ import { Forecast } from "./components/Forecast";
 import { destructureDate } from "./utilities/time_data";
 
 function App() {
-  const [weather, setWeather] = useState();
+  const [data, setData] = useState();
 
   useEffect(() => {
     let timerID = setInterval(() => {
       const date = destructureDate(new Date());
 
+      if (data !== undefined) setData({ ...data, time: date });
+
       if (date.minutes % 30 === 0 && parseInt(date.seconds, 10) === 0) {
-        console.log("hey");
         fetchData()
           .then((res) => {
-            setWeather(res);
+            setData(res);
           })
           .catch((error) => console.error(error));
       }
     });
     fetchData()
       .then((res) => {
-        setWeather(res);
+        setData({ ...res, time: destructureDate(new Date()) });
       })
       .catch((error) => console.error(error));
+
+    return () => clearInterval(timerID);
   }, []);
 
-  if (!weather) return;
+  if (!data) return;
 
   return (
     <div className="app">
@@ -42,19 +45,19 @@ function App() {
       </div>
 
       <div className="temperature-display">
-        <WeatherIcon code={weather.weatherCode} isNight={weather.isNight} />
+        <WeatherIcon code={data.weatherCode} isNight={data.isNight} />
       </div>
       <div className="main-data">
         <MainData
-          temperature={weather.temperature}
-          apparent_temperature={weather.apparentTemperature}
+          temperature={data.temperature}
+          apparent_temperature={data.apparentTemperature}
         />
       </div>
       <div className="time-data">
-        <TimeData />
+        <TimeData time={data.time} />
       </div>
       <div className="forecast">
-        <Forecast forecast={weather.hourly_data} />
+        <Forecast forecast={data.hourly_data} />
       </div>
     </div>
   );

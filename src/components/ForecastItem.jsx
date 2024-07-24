@@ -8,8 +8,8 @@ export function ForecastItem({ item }) {
         alt={item.weatherCode.description}
         className="forecast-icon"
       />
-      <h1 className="title">{item.temperature}°C</h1>
-      <p>
+      <h1 className="temperature">{item.temperature}°C</h1>
+      <p className="time">
         {item.time.hour}:{item.time.minutes}
       </p>
     </div>
