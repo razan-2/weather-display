@@ -13,13 +13,17 @@ import { destructureDate } from "./utilities/time_data";
 function App() {
   const [data, setData] = useState();
 
+  function updateDate(date) {
+    setData((previousData) => ({ ...previousData, time: date }));
+  }
+
   useEffect(() => {
     let timerID = setInterval(() => {
       const date = destructureDate(new Date());
 
-      if (data !== undefined) setData({ ...data, time: date });
+      updateDate(date);
 
-      if (date.minutes % 30 === 0 && parseInt(date.seconds, 10) === 0) {
+      if (date.minute % 30 === 0 && parseInt(date.second, 10) === 0) {
         fetchData()
           .then((res) => {
             setData(res);
