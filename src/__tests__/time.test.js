@@ -7,7 +7,7 @@ describe('tests for destructureDate function', function() {
     const date1 = new Date('December 17, 1995 10:24:00');
     const res = destructureDate(date1);
 
-    const exp_res = {"day": "17", "hour": "10", "minute": "24", "month": "12", "second": "00", "year": "95"}
+    const exp_res = {"day": "17", "hour": "10", "minute": "24", "month": "12", "second": "00", "year": 1995}
 
     expect(res).toMatchObject(exp_res);
   })
@@ -17,7 +17,7 @@ describe('tests for destructureDate function', function() {
     const date1 = new Date('December 17, 1995 3:24:00');
     const res = destructureDate(date1);
 
-    const exp_res = {"day": "17", "hour": "03", "minute": "24", "month": "12", "second": "00", "year": "95"}
+    const exp_res = {"day": "17", "hour": "03", "minute": "24", "month": "12", "second": "00", "year": 1995}
 
     expect(res).toMatchObject(exp_res);
   })
