@@ -1,6 +1,6 @@
 export function destructureDate(date) {
   return {
-    year: ("0" + date.getFullYear()).slice(-2),
+    year: date.getFullYear(),
     month: ("0" + (date.getMonth() + 1)).slice(-2),
     day: ("0" + date.getDate()).slice(-2),
     hour: ("0" + date.getHours()).slice(-2),
